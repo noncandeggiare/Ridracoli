@@ -1,0 +1,2 @@
+Lo script estrattore.py scarica i dati relative alla diga di Ridracoli dal sito Romagna Acque, e li salva in un json. 
+L'idea è di automatizzarlo in modo che i dati vengano scaricati ogni 4 ore (o qualcosa del genere), dato che sul sito vengono presentati solo i dati puntuali e non è possibile accedere allo storico.
