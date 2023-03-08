@@ -9,6 +9,6 @@ if response.status_code == 200:
     with open("storicoridracoli.json", "a") as f:
         json.dump(storicoridracoli, f)
         f.write('\n')  # add a newline separator
-        print("New data appended to storicoridracoli.json")
+        print("Dati aggiunti a storicoridracoli.json")
 else:
-    print("Error: Failed to retrieve data from URL")
+    print("Errore: URL non raggiungibile")
