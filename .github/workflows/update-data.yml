@@ -31,5 +31,5 @@ jobs:
         git config --global user.email "filippobuscaroli@outlook.it"
         git config --global user.name "Filippo Buscaroli"
         git add .
-        git commit -m "Updated data"
+        git commit -m "Storicoridracoli.json updated at $(date '+%Y-%m-%d %H:%M:%S')"
         git push https://$PAT@github.com/noncandeggiare/Ridracoli.git
