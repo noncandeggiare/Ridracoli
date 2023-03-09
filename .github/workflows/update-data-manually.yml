@@ -26,6 +26,8 @@ jobs:
         python estrattore.py
       
     - name: Commit changes
+      env:
+        PAT: ${{ secrets.PAT }}
       run: |
         set -x
         git config --global user.email "filippobuscaroli@outlook.it"
