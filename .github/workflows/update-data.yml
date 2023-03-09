@@ -2,25 +2,28 @@ name: Update data
 
 on:
   schedule:
-    - cron: '0 3,9,15,21 * * *'
+    - cron: '0 2,8,14,20 * * *'
+    workflow:dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      
-    - name: Install Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-      
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+          
+    - name: Install requirements
+      run: |
+        python3 -m venv venv
+        source venv/bin/activate
+        pip install --upgrade pip
+        pip install -r requirements.txt
       
     - name: Run script
-      run: python estrattore.py
+      run: 
+        source venv/bin/activate  
+        python estrattore.py
       
     - name: Commit changes
       run: |
