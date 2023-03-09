@@ -6,32 +6,29 @@ on:
   [workflow_dispatch]
 
 jobs:
-  manual_update:
+  update:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-          
-    - name: Install requirements
-      run: |
-        python3 -m venv venv
-        source venv/bin/activate
-        pip install --upgrade pip
-        pip install -r requirements.txt
+      
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+      
+    - name: Install dependencies
+      run: pip install -r requirements.txt
       
     - name: Run script
-      run: 
-        source venv/bin/activate  
-        python estrattore.py
+      run: python estrattore.py
       
     - name: Commit changes
       env:
         PAT: ${{ secrets.PAT }}
       run: |
-        set -x
         git config --global user.email "filippobuscaroli@outlook.it"
         git config --global user.name "Filippo Buscaroli"
         git add .
-        git commit -m "Update data Manually"
+        git commit -m "Updated data manually"
         git push https://$PAT@github.com/noncandeggiare/Ridracoli.git
