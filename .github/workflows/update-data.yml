@@ -3,7 +3,7 @@ name: Update data
 on:
   schedule:
     - cron: '0 2,8,14,20 * * *'
-    workflow:dispatch:
+    workflow_dispatch:
 
 jobs:
   update:
