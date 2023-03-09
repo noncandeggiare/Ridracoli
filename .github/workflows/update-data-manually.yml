@@ -1,0 +1,34 @@
+# .github\workflows\update-data-manually.yml
+
+name: Update data Manually
+
+on:
+  [workflow_dispatch]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+          
+    - name: Install requirements
+      run: |
+        python3 -m venv venv
+        source venv/bin/activate
+        pip install --upgrade pip
+        pip install -r requirements.txt
+      
+    - name: Run script
+      run: 
+        source venv/bin/activate  
+        python estrattore.py
+      
+    - name: Commit changes
+      run: |
+        git config --global user.email "filippobuscaroli@outlook.it"
+        git config --global user.name "Filippo Buscaroli"
+        git add .
+        git commit -m "Update data Manually"
+        git push
